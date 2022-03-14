@@ -839,7 +839,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &962942701
 RectTransform:
   m_ObjectHideFlags: 0
@@ -6961,7 +6961,7 @@ MonoBehaviour:
   deathDelay: 0.5
   deathEffect: {fileID: 6236785719931427184, guid: caf096f0c9f61e84c89f9ce9618b6cb0, type: 3}
   moveSpeed: 4
-  rotationSensitivity: 0.02
+  rotationSensitivity: 2
   projPrefab: {fileID: 9091205800637328889, guid: fee51b94e7f17104c802e4dffd2e74ec, type: 3}
   projSpeed: 10
   shootInterval: 0.5
@@ -7320,7 +7320,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &2056514162
 RectTransform:
   m_ObjectHideFlags: 0

@@ -42,7 +42,7 @@ public class GameManager : MonoBehaviour
     {
         isGameOver = true;
         Time.timeScale = 0;
-        AudioSystem.Stop();
+        // AudioSystem.Stop();
         endScreen.alpha = 1f;
         endScreen.blocksRaycasts = true;
         endScreen.interactable = true;
