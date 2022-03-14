@@ -15,6 +15,7 @@ public class Player : MonoBehaviour
     [SerializeField] private Projectile projPrefab;
     [SerializeField] private float projSpeed = 5f;
     [SerializeField] private float shootInterval = 0.5f;
+    [SerializeField] private float boostedShootInterval = 0.3f;
 
     private int health;
     public int Health { get => health; }
@@ -26,12 +27,16 @@ public class Player : MonoBehaviour
     private new Rigidbody2D rigidbody2D;
     private SpriteRenderer spriteRenderer;
     private WaitForSeconds shootWait;
+    private WaitForSeconds boostedShootWait;
+    private Coroutine attackBoostRoutine;
+    private bool isSpeedBoosted = false;
 
     private void Awake()
     {
         rigidbody2D = GetComponent<Rigidbody2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         shootWait = new WaitForSeconds(shootInterval);
+        boostedShootWait = new WaitForSeconds(boostedShootInterval);
         health = maxHealth;
     }
 
@@ -73,6 +78,28 @@ public class Player : MonoBehaviour
         }
     }
 
+    public void GainHealth()
+    {
+        if (health < maxHealth)
+        {
+            health++;
+            healthbar.UpdateDisplay(this);
+        }
+    }
+
+    public void AttackSpeedBoost(float duration)
+    {
+        if (attackBoostRoutine != null) StopCoroutine(attackBoostRoutine);
+        StartCoroutine(AttackBoostRoutine(duration));
+    }
+
+    private IEnumerator AttackBoostRoutine(float duration)
+    {
+        isSpeedBoosted = true;
+        yield return new WaitForSeconds(duration);
+        isSpeedBoosted = false;
+    }
+
     private IEnumerator DelayDeath()
     {
         yield return new WaitForSeconds(deathDelay);
@@ -88,7 +115,14 @@ public class Player : MonoBehaviour
             Vector2 spawnPos = (Vector2)transform.position + lookDir;
             Projectile proj = Instantiate(projPrefab, spawnPos, transform.rotation);
             proj.Shoot(lookDir * projSpeed);
-            yield return shootWait;
+            if (isSpeedBoosted)
+            {
+                yield return boostedShootWait;
+            }
+            else
+            {
+                yield return shootWait;
+            }
         }
     }
 }

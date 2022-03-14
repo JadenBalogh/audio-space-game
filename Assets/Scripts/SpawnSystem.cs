@@ -6,6 +6,8 @@ public class SpawnSystem : MonoBehaviour
 {
     [SerializeField] private GameObject asteroidPrefab;
     [SerializeField] private GameObject enemyPrefab;
+    [SerializeField] private GameObject healthPrefab;
+    [SerializeField] private GameObject speedPrefab;
     [SerializeField] private float spawnRadius = 8f;
     [SerializeField] private float spawnOffset = 10f;
     [SerializeField] private float spawnInterval = 0.4f;
@@ -25,13 +27,22 @@ public class SpawnSystem : MonoBehaviour
         while (true)
         {
             Vector2 spawnPos = (Vector2)player.transform.position + player.LookDir * spawnOffset + Random.insideUnitCircle * spawnRadius;
-            if (Random.value < 0.7f)
+            float randVal = Random.value;
+            if (randVal < 0.7f)
             {
                 Instantiate(asteroidPrefab, spawnPos, Quaternion.identity);
             }
-            else
+            else if (randVal < 0.90f)
             {
                 Instantiate(enemyPrefab, spawnPos, Quaternion.identity);
+            }
+            else if (randVal < 0.95f)
+            {
+                Instantiate(healthPrefab, spawnPos, Quaternion.identity);
+            }
+            else
+            {
+                Instantiate(speedPrefab, spawnPos, Quaternion.identity);
             }
             yield return spawnWait;
         }

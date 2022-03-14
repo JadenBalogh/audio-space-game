@@ -6965,6 +6965,7 @@ MonoBehaviour:
   projPrefab: {fileID: 9091205800637328889, guid: fee51b94e7f17104c802e4dffd2e74ec, type: 3}
   projSpeed: 10
   shootInterval: 0.5
+  boostedShootInterval: 0.1
 --- !u!1 &1991663041
 GameObject:
   m_ObjectHideFlags: 0
@@ -7518,7 +7519,7 @@ AudioSource:
   m_GameObject: {fileID: 2061190433}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: -7403798953253169940, guid: 56c6984a8c2e8b5498e2bd0bd999c988, type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
   m_Volume: 1
@@ -7632,6 +7633,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   asteroidPrefab: {fileID: 5217309680782953129, guid: a5a660986f919674aa7623fe4ad2e076, type: 3}
   enemyPrefab: {fileID: 760016817082985945, guid: d163c09a5c232264282f2104b9a1479d, type: 3}
+  healthPrefab: {fileID: 8827035685980494462, guid: f872dff73887d114996678ce6fb10b72, type: 3}
+  speedPrefab: {fileID: 4023786256322018377, guid: 81b75f18f67b31d46baa5b76790dd97d, type: 3}
   spawnRadius: 8
   spawnOffset: 20
   spawnInterval: 0.2
